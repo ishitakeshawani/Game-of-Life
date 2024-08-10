@@ -1,0 +1,8 @@
+.home-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 750px;
+    flex-direction: row;
+  }
