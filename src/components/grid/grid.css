@@ -54,4 +54,10 @@
     font-size: 1.2rem;
     cursor: pointer;
     text-transform: uppercase;
+    width: 170px;
+}
+
+.footer{
+    display: flex;
+    gap: 2rem;
 }
