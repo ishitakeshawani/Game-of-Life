@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mali:wght@400&family=Patrick+Hand&family=Roboto&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Mali", cursive;
+}
+
+:root {
+    --bgcolor: #edf2f4;
+    --gray: #8d99ae;
+    --primary-color: #2b2d42;
+    --white: #ffffff;
+    --red: #ef233c;
+    --border-color: #767676;
+}
+
+body {
+    background-color: var(--bgcolor);
+    width: 100%;
+}
+
+.navbar {
+    padding: 0px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    color: var(--white);
+    font-size: 1.8rem;
+    font-family: "Patrick";
+    text-decoration: none;
+    margin: 0 1rem;
+}
