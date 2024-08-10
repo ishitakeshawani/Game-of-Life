@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./grid.css";
 import Cell from "../cell/Cell";
 import { getArr, getNeighbours } from "../../utility";
@@ -7,6 +7,9 @@ import { getArr, getNeighbours } from "../../utility";
 const Grid = ({ size }) => {
   const [arr, setArr] = useState(getArr(size));
   const [started, setStarted] = useState(false);
+  const [intervalTime,setIntervalTime] = useState(200)
+  const intervalRef = useRef(null);
+
   const handleClick = (row, col) => {
     let newArr = arr.map((rowArr, rIndex) =>
       rIndex === row
@@ -48,10 +51,29 @@ const Grid = ({ size }) => {
   };
 
   const hanldeStart = () => {
-    setArr((prev) => upgradeState(prev))
+    if(!intervalRef.current){
+      intervalRef.current = setInterval(() => {
+        setArr((prev) => upgradeState(prev))
+    }, intervalTime);
+  }
   };
 
-  const hanldeStop = () => {};
+  const hanldeStop = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+
+  const handleReset = () => {
+    setArr(getArr(size))
+  }
+
+  useEffect(() => {
+    return () => hanldeStop();
+  }, []);
+
+
   return (
     <div className="container">
       <div className="grid-container">
@@ -67,9 +89,14 @@ const Grid = ({ size }) => {
           </div>
         ))}
       </div>
-      <button className="button" onClick={() => onhandleClickButton()}>
-        {!started ? "start" : "stop"}
-      </button>
+      <footer className="footer">
+        <button className="button" onClick={() => onhandleClickButton()}>
+          {!started ? "start" : "stop"}
+        </button>
+        <button className="button" onClick={() => handleReset()}>
+          reset
+        </button>
+      </footer>
     </div>
   );
 };
