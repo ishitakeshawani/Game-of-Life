@@ -47,13 +47,8 @@ const Grid = ({ size }) => {
     return newArr;
   };
 
-  useEffect(() => {
-    setArr((prev) => upgradeState(prev));
-  },[])
-
-
   const hanldeStart = () => {
-
+    setArr((prev) => upgradeState(prev))
   };
 
   const hanldeStop = () => {};
