@@ -59,7 +59,7 @@ const Grid = ({ size }) => {
   const hanldeStop = () => {};
   return (
     <div className="container">
-      <div>
+      <div className="grid-container">
         {arr.map((row, rowId) => (
           <div className="row" key={rowId}>
             {row.map((val, colId) => (
