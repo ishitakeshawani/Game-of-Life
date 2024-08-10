@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./grid.css";
 import Cell from "../cell/Cell";
-import { getArr } from "../../utility";
+import { getArr, getNeighbours } from "../../utility";
 
 
 const Grid = ({ size }) => {
@@ -27,7 +27,34 @@ const Grid = ({ size }) => {
     }
   };
 
-  const hanldeStart = () => {};
+  const upgradeState = (currentArr) => {
+    let newArr = currentArr.map((rowArr, rowIndex) =>
+      rowArr.map((item, colIndex) => {
+        const neighbours = getNeighbours(rowIndex, colIndex, size);
+        let activeNeighbours = neighbours.filter(
+          (n) => currentArr[n.r][n.c].active
+        ).length;
+
+        if (item.active && (activeNeighbours < 2 || activeNeighbours >= 4)) {
+          return { ...item, active: false };
+        } else if (!item.active && activeNeighbours === 3) {
+          return { ...item, active: true };
+        } else {
+          return item;
+        }
+      })
+    );
+    return newArr;
+  };
+
+  useEffect(() => {
+    setArr((prev) => upgradeState(prev));
+  },[])
+
+
+  const hanldeStart = () => {
+
+  };
 
   const hanldeStop = () => {};
   return (
