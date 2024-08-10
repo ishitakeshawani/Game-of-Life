@@ -15,6 +15,16 @@ function getArr(size) {
 
 const Grid = ({size}) => {
     const [arr, setArr] = useState(getArr(size));
+    const handleClick = (row, col) => {
+      let newArr = arr.map((rowArr, rIndex) =>
+        rIndex === row
+          ? rowArr.map((item, cIndex) =>
+              cIndex === col ? { ...item, active: !item.active } : item
+            )
+          : rowArr
+      );
+      setArr(newArr);
+    };
   return (
     <div className="container">
       {arr.map((row, rowId) => (
@@ -23,7 +33,7 @@ const Grid = ({size}) => {
               <div
                 key={colId}
                 className={`${val.active ? "active" : "inactive"} cell`}
-               
+                onClick={() => handleClick(rowId, colId)}
               ></div>
             ))}
           </div>
