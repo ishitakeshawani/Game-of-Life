@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.cell {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--gray);;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.active {
+    background-color: var(--primary-color);
+}
+
+.inactive {
+    background-color: white;
+}
