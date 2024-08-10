@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./grid.css";
+import Cell from "../cell/Cell";
 
 function getArr(size) {
   let createdArray = Array.from({ length: size }, () =>
@@ -45,11 +46,11 @@ const Grid = ({ size }) => {
         {arr.map((row, rowId) => (
           <div className="row" key={rowId}>
             {row.map((val, colId) => (
-              <div
+              <Cell
                 key={colId}
-                className={`${val.active ? "active" : "inactive"} cell`}
+                isActive={val.active}
                 onClick={() => handleClick(rowId, colId)}
-              ></div>
+              ></Cell>
             ))}
           </div>
         ))}
