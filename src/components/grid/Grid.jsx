@@ -69,12 +69,15 @@ const Grid = ({ size }) => {
   }
 
   const hanldeRandomStart = () => {
+    setArr(arr => Array.from({ length: size }, () =>
+      Array.from({ length: size }, () => ({ active: false }))
+    ))
     for (let i = 0; i < size; i++) {
       let r = Math.floor(Math.random() * size-1);
       let c = Math.floor(Math.random() * size-1);
       handleClick(r, c);
     }
-    setStarted((val) => !val);
+    setStarted((val) => true);
     hanldeStart();
   };
 
