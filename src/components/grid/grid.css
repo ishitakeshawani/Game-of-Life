@@ -70,3 +70,10 @@
 .button-large{
     width: 240px;
 }
+
+@media (max-width: 599px) {
+    .cell {
+        width: 3vw;
+        height: 2vh;
+    }
+}
