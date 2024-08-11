@@ -1,11 +1,10 @@
 .navbar {
-    padding: 0px;
+    padding: 16px;
     background-color: var(--primary-color);
     color: var(--white);
     position: fixed;
     top: 0;
     left: 0;
-    min-height: 10vh;
     width: 100%;
     display: flex;
     align-items: center;
