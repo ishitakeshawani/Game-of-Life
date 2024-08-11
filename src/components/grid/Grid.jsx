@@ -11,14 +11,13 @@ const Grid = ({ size }) => {
   const intervalRef = useRef(null);
 
   const handleClick = (row, col) => {
-    let newArr = arr.map((rowArr, rIndex) =>
+    setArr(arr => arr.map((rowArr, rIndex) =>
       rIndex === row
         ? rowArr.map((item, cIndex) =>
             cIndex === col ? { ...item, active: !item.active } : item
           )
         : rowArr
-    );
-    setArr(newArr);
+    ))
   };
 
   const onhandleClickButton = () => {
@@ -69,6 +68,16 @@ const Grid = ({ size }) => {
     setArr(getArr(size))
   }
 
+  const hanldeRandomStart = () => {
+    for (let i = 0; i < size; i++) {
+      let r = Math.floor(Math.random() * size-1);
+      let c = Math.floor(Math.random() * size-1);
+      handleClick(r, c);
+    }
+    setStarted((val) => !val);
+    hanldeStart();
+  };
+
   useEffect(() => {
     return () => hanldeStop();
   }, []);
@@ -95,6 +104,9 @@ const Grid = ({ size }) => {
         </button>
         <button className="button" onClick={() => handleReset()}>
           reset
+        </button>
+        <button className="button button-large" onClick={() => hanldeRandomStart()}>
+          random start
         </button>
       </footer>
     </div>
